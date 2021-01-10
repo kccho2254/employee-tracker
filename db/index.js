@@ -1,4 +1,3 @@
-'use strict';
 const connection = require('./connection');
 // module.exports = new DB(connection)
 class DB {
@@ -8,7 +7,7 @@ class DB {
     
        viewAllTitles() {
         return this.connection.query(
-            `
+        `
         SELECT
             title.id,
             title.name AS Title,
