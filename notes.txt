@@ -1,0 +1,42 @@
+View Employees
+	{{ employee_list }}
+View Employees by Department
+	Which department do you want to view?
+		{{ department_list }}
+View Employees by Manager
+	Select a manager
+		{{ manager_list }}
+			{{employee_list }}
+Add Employee
+	What is the employee's first name?
+		{{ text }}
+	What is the employee's last name?
+		{{ text }}
+	What is the employee's role?
+		Sales lead
+		Salesperson
+		Software Engineer
+		I/O Psychologist
+		Account Manager
+		Janitor
+		Legal Team Lead
+		Lawyer
+		Lead Engineer
+	Who is the employee's manager?
+		{{ manager_list }}
+		Employee is a manager
+Remove Employee
+	Which employee do you want to remove?
+		{{ employee_list }}
+Update Employee Role
+	Which employee do you want to update?
+		{{ employee_list }}
+			What do you want to change?
+				First name
+				Last name
+				Role
+					{{ role_list }}
+Update Employee Manager
+	Which employee manager do you want to update?
+		{{ employee_list }}
+			{{ manager_list }}

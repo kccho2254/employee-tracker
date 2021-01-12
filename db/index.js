@@ -1,27 +1,37 @@
 const connection = require('./connection');
-// module.exports = new DB(connection)
 class DB {
     constructor(connection) {
         this.connection = connection;
     }
-    
-       viewAllTitles() {
+
+    addNewEmployee(employee){
+        return this.connection.query(`
+        INSERT INTO
+            employee
+        SET
+        ?
+        `, employee)
+    }
+
+    viewAllRoles() {
         return this.connection.query(
-        `
-        SELECT
-            title.id,
-            title.name AS Title,
-            title.salary AS Salary,
-            house.name AS House
-        FROM
-            title
-        LEFT JOIN
-            house ON title.house_id = house.id
-        ORDER BY
-            title.id;
+            `
+            
         `
         );
     }
-    
+
+    viewAllDepartments(){
+        return this.connection.query(
+            `
+        SELECT 
+            department.id, 
+            department.name 
+        FROM 
+            department;
+        `
+        );
     }
-module.exports = new DB(connection)
+
+}
+module.exports = new DB(connection);
