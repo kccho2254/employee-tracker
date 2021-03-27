@@ -4,7 +4,7 @@ class DB {
         this.connection = connection;
     }
 
-    addNewEmployee(employee){
+    addNewEmployee(employee) {
         return this.connection.query(`
         INSERT INTO
             employee
@@ -16,19 +16,38 @@ class DB {
     viewAllRoles() {
         return this.connection.query(
             `
-            
+            SELECT role.id, role.title FROM role;
+        `
+        );
+    }
+    viewDepartments() {
+        return this.connection.query(
+            `
+            SELECT * from department;
         `
         );
     }
 
-    viewAllDepartments(){
+    viewDepartmentById(id) {
+
         return this.connection.query(
             `
-        SELECT 
-            department.id, 
-            department.name 
-        FROM 
-            department;
+            Select * from employee_db.employee where department_id = ?;
+        `, id
+        );
+    }
+
+    viewAllEmployees() {
+        return this.connection.query(
+
+            `select * from employee_db.employee`
+        );
+    }
+
+    viewManagers() {
+        return this.connection.query(
+            `
+            select * from employee_db.employee where isManager = true;
         `
         );
     }

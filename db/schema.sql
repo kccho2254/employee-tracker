@@ -22,6 +22,7 @@ CREATE TABLE employee (
 	first_name varchar(30) NOT NULL,
     last_name varchar(30) NOT NULL,
     role_id int NOT NULL,
+    is_manager BOOLEAN DEFAULT FALSE,
     manager_id int NOT NULL,
     FOREIGN KEY(role_id) REFERENCES role(id),
     FOREIGN KEY(manager_id) REFERENCES role(id)
@@ -91,3 +92,5 @@ SELECT 'Lead Engineer', 70000, id
 FROM department
 WHERE id = 4
 LIMIT 1;
+
+SELECT * FROM employee WHERE is_manager = TRUE;
