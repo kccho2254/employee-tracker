@@ -4,15 +4,6 @@ class DB {
         this.connection = connection;
     }
 
-    addNewEmployee(employee) {
-        return this.connection.query(`
-        INSERT INTO
-            employee
-        SET
-        ?
-        `, employee)
-    }
-
     viewAllRoles() {
         return this.connection.query(
             `
@@ -32,15 +23,17 @@ class DB {
 
         return this.connection.query(
             `
-            Select * from employee_db.employee where department_id = ?;
-        `, id
+            Select * from employee_db.employee where department_id = ${id};
+        `
         );
     }
 
     viewAllEmployees() {
         return this.connection.query(
 
-            `select * from employee_db.employee`
+            `select employee.*, department.name FROM employee_db.employee
+            inner join employee_db.department
+            on employee.department_id = department.id`
         );
     }
 
@@ -50,6 +43,12 @@ class DB {
             select * from employee_db.employee where isManager = true;
         `
         );
+    }
+
+    addNewEmployee(employee) {
+        return this.connection.query(`
+        INSERT INTO employee_db.employee SET first_name = ?, last_name = ?, role_id = ?, manager_id = ?, department_id = ?
+        `, employee)
     }
 
 }
