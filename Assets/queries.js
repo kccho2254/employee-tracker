@@ -1,7 +1,5 @@
 const db = require('../db');
 const inquirer = require('inquirer');
-const connection = require('../db/connection');
-
 
 async function viewEmployees() {
     try {
@@ -33,7 +31,6 @@ async function Managers() {
 async function viewEmployeeByDepartment() {
 
     try {
-
         let showDepts = await db.viewDepartments();
         console.table(showDepts);
         const department = await inquirer.prompt([
@@ -79,7 +76,7 @@ async function addAnEmployee() {
         {
             name: "department_id",
             type:"list",
-            message:"Which department is he a part of?",
+            message:"Which department are they a part of?",
             choices: department.map(department => {
                 return {
                     name: department.name,
@@ -97,7 +94,6 @@ async function addAnEmployee() {
                     value: role.id
                 }
             })
-
         },
         {
             name: "manager",

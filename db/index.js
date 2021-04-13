@@ -3,7 +3,6 @@ class DB {
     constructor(connection) {
         this.connection = connection;
     }
-
     viewAllRoles() {
         return this.connection.query(
             `
@@ -18,7 +17,6 @@ class DB {
         `
         );
     }
-
     viewDepartmentById(id) {
 
         return this.connection.query(
@@ -27,7 +25,6 @@ class DB {
         `
         );
     }
-
     viewAllEmployees() {
         return this.connection.query(
 
@@ -36,7 +33,6 @@ class DB {
             on employee.department_id = department.id`
         );
     }
-
     viewManagers() {
         return this.connection.query(
             `
@@ -44,12 +40,10 @@ class DB {
         `
         );
     }
-
     addNewEmployee(employee) {
         return this.connection.query(`
         INSERT INTO employee_db.employee SET first_name = ?, last_name = ?, role_id = ?, manager_id = ?, department_id = ?
         `, employee)
     }
-
 }
 module.exports = new DB(connection);
