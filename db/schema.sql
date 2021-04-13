@@ -4,33 +4,41 @@ CREATE DATABASE employee_db;
 
 USE employee_db;
 
-CREATE TABLE department (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(30) NOT NULL
-);
+CREATE TABLE `department` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE role (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
-    salary DECIMAL,
-    department_id INT NOT NULL,
-    FOREIGN KEY(department_id) REFERENCES department(id)
-);
 
-CREATE TABLE employee (
-	id int PRIMARY KEY AUTO_INCREMENT,
-	first_name varchar(30) NOT NULL,
-    last_name varchar(30) NOT NULL,
-    role_id int NOT NULL,
-    is_manager BOOLEAN DEFAULT FALSE,
-    manager_id int NOT NULL,
-    FOREIGN KEY(role_id) REFERENCES role(id),
-    FOREIGN KEY(manager_id) REFERENCES role(id)
-    );
+CREATE TABLE `role` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(30) NOT NULL,
+  `salary` decimal(10,0) DEFAULT NULL,
+  `department_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_department` (`department_id`),
+  CONSTRAINT `fk_department` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-SELECT * FROM employee;
-SELECT * FROM department;
-SELECT * FROM role;
+
+CREATE TABLE `employee` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `role_id` int NOT NULL,
+  `manager_id` int DEFAULT NULL,
+  `isManager` tinyint(1) DEFAULT '0',
+  `department_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_role` (`role_id`),
+  KEY `fk_manager` (`manager_id`),
+  KEY `department_id` (`department_id`),
+  CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`),
+  CONSTRAINT `fk_manager` FOREIGN KEY (`manager_id`) REFERENCES `employee` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 INSERT INTO department (name)
 VALUES ("Sales"), 

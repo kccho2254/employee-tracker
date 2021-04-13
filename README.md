@@ -3,6 +3,9 @@
 
 ### [Repository on Github](https://github.com/kccho2254/employee-tracker)
 
+  <img src="nodeapp.png">
+
+
 
 This is an app that allows the user to write and save notes, powered by Node and Express.js API framework. Saved notes will list to the left-hand side and will be stored in a JSON API with their own uuidv4 generated authentication ID (which for demonstrative purposes are accesible through the URL route /api/notes). 
 
