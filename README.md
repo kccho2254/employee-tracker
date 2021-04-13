@@ -8,17 +8,15 @@ This is a CLI using Node, inquirer, and MySQL, to create a writable interface wh
 Dependencies needed for installation:
 
 ### [Node](https://nodejs.org/en/)
-> npm install node
+* npm install node
 ### [MySQL Workbench](https://www.mysql.com/products/workbench/)
-> npm install mysql
-> Run the schema from schema.sql to populate rows and columns
-> Change the password field in server.js, line 18, to that of your own MySQL server instance
-### [Inqurier](https://www.npmjs.com/package/inquirer)
-> npm install inquirer
+* npm install mysql
+* Run the schema from schema.sql to populate rows and columns
+* Change the password field in server.js, line 18, to that of your own MySQL server instance
+### [Inquirer](https://www.npmjs.com/package/inquirer)
+* npm install inquirer
+* Ensure dependency files are not being pushed to Github/etc. For Github, write "node_modules/" within a .gitignore file of the same parent repo. 
 
-> Ensure dependency files are not being pushed to Github/etc. For Github, write "node_modules/" within a .gitignore file of the same parent repo. 
-
-> You should also run "npm install" to install any other dependencies needed
 ## Test Commands
 
 `` node server.js
