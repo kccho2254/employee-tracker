@@ -2,14 +2,14 @@ const mysql = require('mysql');
 const inquirer = require('inquirer');
 const [VIEW_EMPLOYEES, VIEW_MANAGERS, VIEW_ROLES, VIEW_EMPLOYEES_BY_DEPARTMENT, ADD_EMPLOYEE, REMOVE_EMPLOYEE, UPDATE_EMPLOYEE_MANAGER, UPDATE_EMPLOYEE_ROLE] = require('./Assets/const');
 
-// requiring queries
+// importing questions
 const  {
     viewEmployees,
     viewRoles,
     Managers,
     viewEmployeeByDepartment,
     addAnEmployee
-    } = require('./Assets/queries');
+    } = require('./Assets/promises');
 
 const connection = mysql.createConnection({
     host: 'localhost',
