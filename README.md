@@ -1,6 +1,6 @@
 # Employee Databse CMS
 
-This is a CLI using Node, inquirer, and MySQL, to create a writable interface which connects to a local MySQL server and performs queries. As a hypothetical business, users can view and add departments, job positions, and employees, so as to better organize the business. 
+This is a CLI app using Node.js, inquirer, and MySQL, to create a writable interface presenting question prompts made using async/await promises with the inquirer package, and which connects to a local MySQL server to run queries. As a hypothetical business, users can view and add departments, job positions, and employees, so as to better organize the business. 
 
 * Todo: remove/update queries
 
