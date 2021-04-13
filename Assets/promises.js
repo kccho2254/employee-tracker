@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../db/queries');
 const inquirer = require('inquirer');
 
 async function viewEmployees() {
